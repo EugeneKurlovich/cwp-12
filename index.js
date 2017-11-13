@@ -8,7 +8,6 @@ WorkWork();
 async function WorkWork() {
     await require('./addInfo')(db);
     //1
-    console.log("Lets go");
     let result = await db.turtles.findAll();
     console.log("-----------------------------------");
     result.forEach((value) => {
@@ -29,6 +28,18 @@ async function WorkWork() {
     console.log("-----------------------------------");
     result.forEach((value) => {
         console.log(value.name);
+    });
+
+//3
+   result = await db.turtles.findAll({
+        include: [{
+            model: db.pizzas,
+            as: 'firstFavouritePizza'
+       }]
+    });
+    console.log("-----------------------------------");
+    result.forEach((turtle) => {
+        console.log(turtle.firstFavouritePizza.name);
     });
 
 // 4
@@ -70,13 +81,11 @@ async function WorkWork() {
     console.log(result);   
 
  //7
-
      result = await db.pizzas.findById(1);
     console.log("-----------------------------------");
     console.log(result.name);   
 
   //8
-
   esult = await db.turtles.update({
             firstFavouritePizzaId: 4,
             firstFavouritePizzaId: 3
