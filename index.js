@@ -31,7 +31,27 @@ async function WorkWork() {
         console.log(value.name);
     });
 
-    //3
+// 4
+    result = await db.turtles.create({
+        name: 'Eugene',
+        color: 'color5',
+        weaponId: 3,
+        firstFavouritePizzaId: 2,
+        secondFavouritePizzaId: 4
+    });
+    console.log("-----------------------------------");
+    console.log("CREATED");
+
+
+ //5
+ result = await db.pizzas.update({
+            description: "SUPER FAT!"
+        },
+        {
+            where: {
+                calories: {[db.Sequelize.Op.gt]: '3000'}
+            }
+        });   
 }
 
    
