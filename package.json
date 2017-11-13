@@ -1,0 +1,8 @@
+{
+  "name": "cwp-12",
+  "author": "Eugene",
+  "dependencies": {
+    "sequelize": "^4.22.6",
+    "tedious": "^2.1.1"
+  }
+}
