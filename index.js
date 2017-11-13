@@ -49,9 +49,32 @@ async function WorkWork() {
         },
         {
             where: {
-                calories: {[db.Sequelize.Op.gt]: '3000'}
+                calories: {[db.Sequelize.Op.gt]: '100'}
             }
-        });   
+        });
+
+    console.log("-----------------------------------");
+    console.log("UPDATED");
+
+//6
+     result = await db.turtles.count({
+        where: {
+            '$weapon.dps$': {[db.Sequelize.Op.gt]: '100'}
+        },
+        include: [{
+            model: db.weapons,
+            as: 'weapon'
+        }]
+    });
+    console.log("-----------------------------------");
+    console.log(result);   
+
+ //7
+
+     result = await db.pizzas.findById(1);
+    console.log("-----------------------------------");
+    console.log(result.name);       
+
 }
 
    
