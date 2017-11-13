@@ -1,14 +1,17 @@
 const Sequelize = require('sequelize');
+const config = require('./config.json');
 
-const sequelize = new Sequelize('SHOP', 'sa', 'qwe123', {
-  host: 'localhost',
+const db = require('./models')(Sequelize, config);
+
+
+const dbOptions = {
+  host: config.db.host,
   dialect: 'mssql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});
+  define: { timestamps: false }
+};
+
+const sequelize = new Sequelize(config.db.name,
+  config.db.user, config.db.pass, dbOptions);
 
 sequelize
   .authenticate()
@@ -18,3 +21,5 @@ sequelize
   .catch(err => {
     console.error('Ошибка соединения:', err);
   });
+
+   
