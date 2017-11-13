@@ -73,7 +73,21 @@ async function WorkWork() {
 
      result = await db.pizzas.findById(1);
     console.log("-----------------------------------");
-    console.log(result.name);       
+    console.log(result.name);   
+
+  //8
+
+  esult = await db.turtles.update({
+            firstFavouritePizzaId: 4,
+            firstFavouritePizzaId: 3
+        },
+        {
+            where: {
+                name: 'Eugene'
+            }
+        });   
+    console.log("-----------------------------------");
+    console.log("ADDED");   
 
 }
 
