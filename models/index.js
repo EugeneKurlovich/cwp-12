@@ -1,13 +1,16 @@
 const Turtle = require('./turtle');
 const Weapon = require('./weapon');
 const Pizza = require('./pizza');
-
+const config = require('../config.json');
 module.exports = (Sequelize, config) => {
- const sequelize = new Sequelize(config.db, config.login, config.password, {
-        host: config.host,
-        dialect: config.dialect,
-        logging: false
-    });
+const dbOptions = {
+  host: config.db.host,
+  dialect: 'mssql',
+  define: { timestamps: false }
+};
+
+const sequelize = new Sequelize(config.db.name,
+  config.db.user, config.db.pass, dbOptions);
     sequelize.authenticate().then(() => {
         console.log('Connection to database successful');
     }).catch((err) => {
