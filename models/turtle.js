@@ -8,7 +8,7 @@ module.exports = (Sequelize, sequelize) => {
     color:{ type: Sequelize.STRING(500),
    allowNull: false},
     weaponId:{type: Sequelize.INTEGER},
-    firstFavoritePizzaId:{type: Sequelize.INTEGER},
-    secondFavoritePizzaId:{type: Sequelize.INTEGER}
+    firstFavouritePizzaId:{type: Sequelize.INTEGER},
+    secondFavouritePizzaId:{type: Sequelize.INTEGER}
   });
 };

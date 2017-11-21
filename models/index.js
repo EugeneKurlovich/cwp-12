@@ -6,7 +6,8 @@ module.exports = (Sequelize, config) => {
 const dbOptions = {
   host: config.db.host,
   dialect: 'mssql',
-  define: { timestamps: false }
+  define: { timestamps: false },
+  logging : false
 };
 
 const sequelize = new Sequelize(config.db.name,
