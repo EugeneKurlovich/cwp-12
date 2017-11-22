@@ -34,19 +34,21 @@ async function WorkWork() {
     });
 
 //3
-/*
-  result = await db.turtles.findAll({
-        group: 'firstFavouritePizzaId',
-        include: [{
-            model: db.pizzas,
-            as: 'firstFavouritePizza'
+
+ result = await db.turtles.findAll({
+         include: [{
+             model: db.pizzas,
+             as: 'firstFavouritePizza',
+               group: ['firstFavouritePizza.name']
         }]
-    });
-    console.log("-----------------------------------3");
+       
+     });
+     console.log("-----------------------------------");
+     console.log("Favourite Pizzas :");
     result.forEach((turtle) => {
-        console.log(turtle.firstFavouritePizza.name);
-    });
-*/
+         console.log(turtle.firstFavouritePizza.name);
+     });
+
 // 4
     result = await db.turtles.create({
         name: 'Eugene',
