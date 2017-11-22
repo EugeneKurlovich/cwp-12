@@ -38,15 +38,20 @@ async function WorkWork() {
  result = await db.turtles.findAll({
          include: [{
              model: db.pizzas,
-             as: 'firstFavouritePizza',
-               group: ['firstFavouritePizza.name']
-        }]
-       
+             as: 'firstFavouritePizza'
+        }]      
      });
+
+let mySet = new Set();
+
+    result.forEach((i) => {
+         mySet.add(i.firstFavouritePizza.name);
+     });
+
      console.log("-----------------------------------");
      console.log("Favourite Pizzas :");
-    result.forEach((turtle) => {
-         console.log(turtle.firstFavouritePizza.name);
+    mySet.forEach((i) => {
+         console.log(i);
      });
 
 // 4
